@@ -11,8 +11,13 @@
 
     <div id="app">{{message}} {{hoge}}</div>
     <div id="app2">{{message}} {{hoge}}</div>
+    <div id="app3">
+        <button @click="count++">
+            Count is :{{count}}
+        </button>
+    </div>
     <script type="module">
-        import { createApp } from 'vue___'
+        import { createApp, ref } from 'vue___'
         const dataObject = {
             message: "Hello!!!",
             message2: "mes2"
@@ -21,6 +26,11 @@
             data: () => dataObject
         })
         app.mount('#app')
+        createApp({
+            setup() {
+                return { count: ref(0) }
+            }
+        }).mount("#app3")
     </script>
 </body>
 
