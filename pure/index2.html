@@ -1,0 +1,32 @@
+<style>
+    .title {
+        color: red;
+    }
+</style>
+<script type="importmap">
+    {
+        "imports": {
+            "vue":"https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+    }
+</script>
+<script type="module">
+    import { createApp, reactive, ref } from "vue"
+    const counter = reactive({ count: 0 })
+    const message = ref("Hello World")
+
+    createApp({
+        setup() {
+            const titleClass = ref('title')
+            return {
+                counter, message,
+                titleClass
+            }
+        }
+    }).mount("#app")
+</script>
+<div id="app">
+    <h1>message: {{message}}</h1>
+    <p>Count is: {{counter.count}}</p>
+    <p :class="titleClass">Make me red.</p>
+</div>
