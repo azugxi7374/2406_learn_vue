@@ -14,13 +14,15 @@
     import { createApp, reactive, ref } from "vue"
     const counter = reactive({ count: 0 })
     const message = ref("Hello World")
+    const inputtext = ref('')
 
     createApp({
         setup() {
             const titleClass = ref('title')
             return {
                 counter, message,
-                titleClass
+                titleClass,
+                inputtext
             }
         }
     }).mount("#app")
@@ -29,4 +31,7 @@
     <h1>message: {{message}}</h1>
     <p>Count is: {{counter.count}}</p>
     <p :class="titleClass">Make me red.</p>
+    <input v-model="inputtext" placeholder="type here">
+    <input v-model="inputtext" placeholder="type here2">
+    <p>text is {{inputtext}}</p>
 </div>
