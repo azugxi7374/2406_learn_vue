@@ -11,10 +11,13 @@
     }
 </script>
 <script type="module">
-    import { createApp, reactive, ref } from "vue"
+    import { createApp, reactive, ref, computed } from "vue"
     const counter = reactive({ count: 0 })
     const message = ref("Hello World")
     const inputtext = ref('')
+    const inputLen = computed(() => {
+        return inputtext.value.length
+    })
 
     createApp({
         setup() {
@@ -22,7 +25,8 @@
             return {
                 counter, message,
                 titleClass,
-                inputtext
+                inputtext,
+                inputLen
             }
         }
     }).mount("#app")
@@ -33,5 +37,5 @@
     <p :class="titleClass">Make me red.</p>
     <input v-model="inputtext" placeholder="type here">
     <input v-model="inputtext" placeholder="type here2">
-    <p>text is {{inputtext}}</p>
+    <p>text is {{inputtext}}. length = {{inputLen}}.({{inputtext.length}})</p>
 </div>
