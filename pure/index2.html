@@ -21,6 +21,12 @@
     })
     const handlePlusNum = () => { }
 
+    const objAttr = {
+        id: "container",
+        class: "wrapper",
+        style: "color:green",
+    }
+
     createApp({
         components: {
             comp1
@@ -33,6 +39,7 @@
                 titleClass,
                 inputtext,
                 inputLen,
+                objAttr,
                 handlePlusNum
             }
         }
@@ -42,8 +49,11 @@
     <h1>message: {{message}}</h1>
     <p>Count is: {{counter.count}}</p>
     <p :class="titleClass">Make me red.</p>
+    <!--↑同じ↓-->
+    <p v-bind:class="titleClass">Make me red.</p>
     <input v-model="inputtext" placeholder="type here">
     <input v-model="inputtext" placeholder="type here2">
     <p>text is {{inputtext}}. length = {{inputLen}}.({{inputtext.length}})</p>
+    <p v-bind="objAttr">objAttr</p>
     <comp1 @plus="handlePlusNum" :num="5"></comp1>
 </div>
