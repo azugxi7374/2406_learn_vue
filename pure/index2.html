@@ -20,6 +20,16 @@
         return inputtext.value.length
     })
     const handlePlusNum = () => { }
+    const startTime = Date.now()
+    function calcTime() {
+        const t = Date.now() - startTime
+        return t / 1000
+    }
+    const time = ref(calcTime())
+    setInterval(() => {
+        time.value = calcTime()
+    }, 50)
+
 
     const objAttr = {
         id: "container",
@@ -40,6 +50,7 @@
                 inputtext,
                 inputLen,
                 objAttr,
+                time,
                 handlePlusNum
             }
         }
@@ -56,4 +67,5 @@
     <p>text is {{inputtext}}. length = {{inputLen}}.({{inputtext.length}})</p>
     <p v-bind="objAttr">objAttr</p>
     <comp1 @plus="handlePlusNum" :num="5"></comp1>
+    <p>time: {{time}}</p>
 </div>
